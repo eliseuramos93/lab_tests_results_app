@@ -1,0 +1,36 @@
+services:
+  rails-backend:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    container_name: rails-backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/rails
+      - ruby-gems:/usr/local/bundle
+    depends_on:
+      - postgres
+    environment:
+      RAILS_MASTER_KEY: "${RAILS_MASTER_KEY}"
+    links:
+      - postgres
+    stdin_open: true
+    tty: true
+    command: bin/dev
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      host: postgres
+    volumes:
+      - database:/var/lib/postgresql/data
+
+volumes:
+  ruby-gems:
+  database:

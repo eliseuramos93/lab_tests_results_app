@@ -4,6 +4,7 @@ ruby '3.3.0'
 
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
+gem 'csv'
 gem 'dotenv-rails'
 gem 'jbuilder'
 gem 'jsbundling-rails'

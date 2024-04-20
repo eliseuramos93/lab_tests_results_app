@@ -1,5 +1,7 @@
 module ImportCSVData
   def self.run(file:)
+    raise Exceptions::InvalidFileTypeError unless File.fnmatch?('*.csv', file.path)
+
     csv = CSV.open(file, col_sep: ';', headers: true)
     csv.each { |row| import_row_from_csv(row:) }
   end

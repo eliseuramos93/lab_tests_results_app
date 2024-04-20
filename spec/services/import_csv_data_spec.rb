@@ -38,5 +38,12 @@ RSpec.describe ImportCSVData do
       expect(LabTestResult.fourth.result).to eq '50'
       expect(LabTestResult.fifth.result).to eq '41'
     end
+
+    it 'raises an error if the provided file is not a CSV file' do
+      file_path = Rails.root.join('spec/assets/starwars_v_script.txt')
+      file = File.open(file_path)
+
+      expect { ImportCSVData.run(file:) }.to raise_error Exceptions::InvalidFileTypeError
+    end
   end
 end

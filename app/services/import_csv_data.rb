@@ -1,3 +1,5 @@
+require 'csv'
+
 module ImportCSVData
   def self.run(file:)
     raise Exceptions::InvalidFileTypeError unless File.fnmatch?('*.csv', file.path)
@@ -12,6 +14,7 @@ module ImportCSVData
     examination = import_examination_from_csv(row:, patient:, doctor:)
     lab_test =  import_lab_test_from_csv(row:)
     import_lab_test_result_from_csv(row:, examination:, lab_test:)
+    print '.'
   end
 
   private_class_method def self.import_patient_from_csv(row:)

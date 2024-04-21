@@ -39,7 +39,7 @@ docker compose -f dev.docker-compose.yml --build
 _Important: It's recomended that you use Google Chrome for this step, since Firefox may have some issues regarding demanding a HTTPS connection, which the aplication still does not support._
 
 
-## How to run the application tests
+## How to run the application's tests
 
 1. Execute the application in a development environment (refer to instructions above to do so);
 2. Access the bash of the `rails-backend` container. You can do this by running the suggested command below:

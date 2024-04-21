@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      doctor:
+        one: 'Médico'
+        other: 'Médicos'
+    attributes:
+      doctor:
+        crm: 'CRM'
+        crm_state: 'Estado CRM'
+        full_name: 'Nome do Médico'
+        email: 'E-mail do Médico'

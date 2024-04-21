@@ -9,11 +9,11 @@ RSpec.describe ImportCSVData do
 
       ImportCSVData.run(file:)
 
-      expect(Patient.count).to eq 5
-      expect(Doctor.count).to eq 3
-      expect(Examination.count).to eq 5
-      expect(LabTest.count).to eq 5
-      expect(LabTestResult.count).to eq 5
+      expect(Patient.count).to eq 29
+      expect(Doctor.count).to eq 10
+      expect(Examination.count).to eq 44
+      expect(LabTest.count).to eq 9
+      expect(LabTestResult.count).to eq 45
       expect(Patient.first.full_name).to eq 'Emilly Batista Neto'
       expect(Patient.second.full_name).to eq 'Matheus Barroso'
       expect(Patient.third.full_name).to eq 'Patricia Gentil'

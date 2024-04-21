@@ -3,7 +3,7 @@ require_relative '../../../app/services/import_csv_data'
 
 RSpec.describe 'User visits homepage' do
   context "when the app's database is populated" do
-    it 'and sees the examinations results successfully' do
+    it 'and sees the examinations results paginated successfully' do
       test_data_path = Rails.root.join('spec/assets/test_data.csv')
       test_data_file = File.open(test_data_path)
       ImportCSVData.run(file: test_data_file)
@@ -11,6 +11,11 @@ RSpec.describe 'User visits homepage' do
       visit root_path
 
       expect(page).to have_content 'Resultado dos Exames'
+      within '#exams-table-pagination' do
+        expect(page).to have_link '1', href: '/?page=1'
+        expect(page).to have_link '2', href: '/?page=2'
+      end
+
       within 'thead' do
         expect(page).to have_content 'Token'
         expect(page).to have_content 'Data do Exame'
@@ -42,6 +47,29 @@ RSpec.describe 'User visits homepage' do
         expect(page).to have_content 'Patricia Gentil'
         expect(page).to have_content 'Ígor Moura'
         expect(page).to have_content 'Dra. Vitória Soares'
+      end
+    end
+
+    it 'and is able to change the page of the examinations results' do
+      test_data_path = Rails.root.join('spec/assets/test_data.csv')
+      test_data_file = File.open(test_data_path)
+      ImportCSVData.run(file: test_data_file)
+
+      visit root_path
+      within '#exams-table-pagination' do
+        click_on '2'
+      end
+
+      first_page_tokens = Examination.all.map(&:token)[0...30]
+      second_page_tokens = Examination.all.map(&:token)[30..]
+      within 'tbody' do
+        first_page_tokens.each do |token|
+          expect(page).not_to have_content token
+        end
+
+        second_page_tokens.each do |token|
+          expect(page).to have_content token
+        end
       end
     end
   end

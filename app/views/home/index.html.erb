@@ -1,7 +1,8 @@
-<h1><%= t 'views.home.index.title' %></h1>
+<h1 class="d-flex justify-content-center mb-5"><%= t 'views.home.index.title' %></h1>
 
 <% unless Examination.any? %>
     <p><%= t 'views.home.index.empty_database_alert' %></p>
 <% else %>
+    <%= render 'exams_table_pagination', total_pages: @total_pages %>
     <%= render 'exams_table', examinations: @examinations %>
 <% end %>

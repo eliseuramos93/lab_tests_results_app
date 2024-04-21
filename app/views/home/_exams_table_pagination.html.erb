@@ -1,4 +1,4 @@
-<div id="exams-table-pagination" class="d-flex justify-content-center gap-2 mb-3">
+<div id="exams-table-pagination" class="d-flex justify-content-center gap-2 mb-3 mt-3">
     <% (1..total_pages).each do |index| %>
         <%= link_to "#{index}", root_path(page: index), class: 'btn btn-dark' %>
     <% end %>

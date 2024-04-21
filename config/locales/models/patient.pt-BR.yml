@@ -7,7 +7,7 @@ pt-BR:
     attributes:
       patient:
         cpf: 'CPF'
-        full_name: 'Nome'
+        full_name: 'Nome do Paciente'
         birth_date: 'Data de Nascimento'
         email: 'E-mail'
         address: 'Endereço'

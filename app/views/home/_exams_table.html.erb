@@ -1,36 +1,24 @@
-<div class="table-responsive">
+<div class="d-flex mx-auto table-responsive w-75">
     <table class="table table-striped table-hover table-lg">
         <thead>
             <tr>
                 <th scope="col" class="text-nowrap"><%= t 'activerecord.attributes.examination.token' %></th>
                 <th scope="col" class="text-nowrap"><%= t 'activerecord.attributes.examination.date' %></th>
                 <th scope="col" class="text-nowrap"><%= t 'activerecord.attributes.patient.full_name' %></th>
-                <th scope="col" class="text-nowrap"><%= t 'activerecord.attributes.patient.email' %></th>
-                <th scope="col" class="text-nowrap"><%= t 'activerecord.attributes.patient.birth_date' %></th>
-                <th scope="col" class="text-nowrap"><%= t 'activerecord.attributes.patient.address' %></th>
-                <th scope="col" class="text-nowrap"><%= t 'activerecord.attributes.patient.city' %></th>
-                <th scope="col" class="text-nowrap"><%= t 'activerecord.attributes.patient.state' %></th>
                 <th scope="col" class="text-nowrap"><%= t 'activerecord.attributes.doctor.crm' %></th>
                 <th scope="col" class="text-nowrap"><%= t 'activerecord.attributes.doctor.crm_state' %></th>
                 <th scope="col" class="text-nowrap"><%= t 'activerecord.attributes.doctor.full_name' %></th>
-                <th scope="col" class="text-nowrap"><%= t 'activerecord.attributes.doctor.email' %></th>
             </tr>
         </thead>
         <tbody>
             <% examinations.each do |examination| %>
                 <tr>
-                    <td><%= examination.token %></td>
-                    <td><%= l examination.date %></td>
-                    <td><%= examination.patient.full_name %></td>
-                    <td><%= examination.patient.email %></td>
-                    <td><%= l examination.patient.birth_date %></td>
-                    <td><%= examination.patient.address %></td>
-                    <td><%= examination.patient.city %></td>
-                    <td><%= examination.patient.state %></td>
-                    <td><%= examination.doctor.crm %></td>
-                    <td><%= examination.doctor.crm_state %></td>
-                    <td><%= examination.doctor.full_name %></td>
-                    <td><%= examination.doctor.email %></td>
+                    <td class="text-nowrap"><%= examination.token %></td>
+                    <td class="text-nowrap"><%= l examination.date %></td>
+                    <td class="text-nowrap"><%= examination.patient.full_name %></td>
+                    <td class="text-nowrap"><%= examination.doctor.crm %></td>
+                    <td class="text-nowrap"><%= examination.doctor.crm_state %></td>
+                    <td class="text-nowrap"><%= examination.doctor.full_name %></td>
                 </tr>
             <% end %>
         </tbody>

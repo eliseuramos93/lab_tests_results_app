@@ -3,6 +3,6 @@
 <% unless Examination.any? %>
     <p><%= t 'views.home.index.empty_database_alert' %></p>
 <% else %>
-    <%= render 'exams_table_pagination', total_pages: @total_pages %>
     <%= render 'exams_table', examinations: @examinations %>
+    <%= render 'exams_table_pagination', total_pages: @total_pages %>
 <% end %>

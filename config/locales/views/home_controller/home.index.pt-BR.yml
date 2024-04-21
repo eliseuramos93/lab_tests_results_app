@@ -1,0 +1,6 @@
+pt-BR:
+  views:
+    home:
+      index:
+        title: 'Resultado dos Exames'
+        empty_database_alert: 'Nenhum dado disponível no momento'

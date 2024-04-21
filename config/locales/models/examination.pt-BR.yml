@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      examination:
+        one: 'Exame'
+        other: 'Exames'
+    attributes:
+      examination:
+        patient_id: 'Paciente'
+        doctor_id: 'Médico'
+        token: 'Token'
+        date: 'Data do Exame'

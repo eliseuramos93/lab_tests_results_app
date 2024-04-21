@@ -30,8 +30,28 @@ Have Docker Engine (or Docker Desktop) installed on your local machine. The inst
 
 ## How to run the application in a development environment
 
-WIP
+1. You must have Docker Engine (or Docker Desktop) installed on your local machine before running the application. Please refer to [Docker's documentation page](https://www.docker.com/) to receive proper installation instructions;
+2. You must start the containers in the development settings using the command below (assuming you are using a Unix-based system or emulating one):
+```bash
+docker compose -f dev.docker-compose.yml --build
+```
+3. After the containers are created and started, and the web services are ready (it may take a few minutes), access `http://localhost:3000` on your browser.
+_Important: It's recomended that you use Google Chrome for this step, since Firefox may have some issues regarding demanding a HTTPS connection, which the aplication still does not support._
 
-## How to run the application tests
 
-WIP
+## How to run the application's tests
+
+1. Execute the application in a development environment (refer to instructions above to do so);
+2. Access the bash of the `rails-backend` container. You can do this by running the suggested command below:
+```bash
+docker exec -it rails-backend bash
+```
+3. Run the command below to execute the RSpec tests and Rubocop lint check:
+```bash
+bin/test
+```
+
+As an option, in the second step you can also run the command directly when accessing the Docker container:
+```bash
+docker exec rails-backend bin/test
+```

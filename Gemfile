@@ -17,6 +17,7 @@ gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 
 group :test do
+  gem 'capybara'
   gem 'simplecov', require: false
 end
 

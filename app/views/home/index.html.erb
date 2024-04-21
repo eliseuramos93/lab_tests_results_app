@@ -1,38 +1,7 @@
 <h1><%= t 'views.home.index.title' %></h1>
 
-<table>
-    <thead>
-        <tr>
-            <th><%= t 'activerecord.attributes.examination.token' %></th>
-            <th><%= t 'activerecord.attributes.examination.date' %></th>
-            <th><%= t 'activerecord.attributes.patient.full_name' %></th>
-            <th><%= t 'activerecord.attributes.patient.email' %></th>
-            <th><%= t 'activerecord.attributes.patient.birth_date' %></th>
-            <th><%= t 'activerecord.attributes.patient.address' %></th>
-            <th><%= t 'activerecord.attributes.patient.city' %></th>
-            <th><%= t 'activerecord.attributes.patient.state' %></th>
-            <th><%= t 'activerecord.attributes.doctor.crm' %></th>
-            <th><%= t 'activerecord.attributes.doctor.crm_state' %></th>
-            <th><%= t 'activerecord.attributes.doctor.full_name' %></th>
-            <th><%= t 'activerecord.attributes.doctor.email' %></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @examinations.each do |examination| %>
-            <tr>
-                <td><%= examination.token %></td>
-                <td><%= l examination.date %></td>
-                <td><%= examination.patient.full_name %></td>
-                <td><%= examination.patient.email %></td>
-                <td><%= l examination.patient.birth_date %></td>
-                <td><%= examination.patient.address %></td>
-                <td><%= examination.patient.city %></td>
-                <td><%= examination.patient.state %></td>
-                <td><%= examination.doctor.crm %></td>
-                <td><%= examination.doctor.crm_state %></td>
-                <td><%= examination.doctor.full_name %></td>
-                <td><%= examination.doctor.email %></td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
+<% unless Examination.any? %>
+    <p><%= t 'views.home.index.empty_database_alert' %></p>
+<% else %>
+    <%= render 'exams_table', examinations: @examinations %>
+<% end %>

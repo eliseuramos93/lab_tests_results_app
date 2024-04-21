@@ -45,4 +45,17 @@ RSpec.describe 'User visits homepage' do
       end
     end
   end
+
+  context 'without data in the database' do
+    it 'alerts the user that no data is available' do
+      visit root_path
+
+      expect(Patient.any?).to be_falsey         # ensure there is no data in database
+      expect(Doctor.any?).to be_falsey          # ensure there is no data in database
+      expect(Examination.any?).to be_falsey     # ensure there is no data in database
+      expect(LabTest.any?).to be_falsey         # ensure there is no data in database
+      expect(LabTestResult.any?).to be_falsey   # ensure there is no data in database
+      expect(page).to have_content 'Nenhum dado disponível no momento'
+    end
+  end
 end
